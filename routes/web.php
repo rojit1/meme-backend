@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes();//['verify'=>true]
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::prefix('admin')->group(function(){
+    Route::get('/login','Admin\AdminLoginController@showLoginForm');
+    Route::post('/login','Admin\AdminLoginController@login')->name('admin.login');
+    Route::get('/','Admin\AdminController@index')->name('admin.dashboard');
+});
+
+
