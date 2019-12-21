@@ -5,7 +5,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="index3.html" class="nav-link">Home</a>
+      <a href="#" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>
@@ -27,6 +27,11 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     
+    <li class="nav-item dropdown">
+    <a class="nav-link" href="/home"><i
+        class="fas fa-eye"></i></a>
+    </li>
+
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-bell"></i>
