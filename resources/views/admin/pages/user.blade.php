@@ -3,7 +3,7 @@
 @section('content')
     
     <table class="table table-hover table-bordered table-striped">
-        <tr style="border:2px solid blue;">
+        <tr style="border:2px solid blue;background-color:darkolivegreen;color:white">
             <td>#</td>
             <td>Firstname</td>
             <td>Lastname</td>
@@ -24,8 +24,8 @@
             <td>{{$user->image?? 'No Image'}}</td>
 
             <td>
-                <a href=""><button class="btn btn-success">Edit</button></a>
-                <a href=""><button class="btn btn-warning">Delete</button></a>
+                <a href=""><button class="btn btn-outline-success">Edit</button></a>
+                <a href=""><button class="btn btn-outline-danger">Delete</button></a>
             </td>
             </tr>
         @endforeach

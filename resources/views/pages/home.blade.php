@@ -3,21 +3,88 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+        <div class="col-md-12"> <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Hello, {{Auth::user()->firstname}}</div>
+        
+                        <div class="card-body">
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif                               
+                            
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            <form action="">
+
+                                <input type="text" name="" id="">
+                                <input type="file" name="" id="">
+                                <input type="submit" name="" id="">
+
+                            </form>
+
                         </div>
-                    @endif
-
-                    You are logged in!
-
-                </div>
+                    </div>
             </div>
+
+            {{-- next row --}}
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                            Following Users
+                    </div>
+                        <hr>
+                        <div class="row">
+                            
+                                <div class="col-md-8">
+                                    <form action="">
+                                    <input type="text" name="" class="form-control" style="border-width: 0 0 1px">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="btn btn-outline-info" type="submit" value="Search" id="">
+                                    </form>
+                                </div>
+                                                      
+                        </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                          </ul>
+                    </div>
+                </div>
+                {{-- Next card --}}
+                <div class="card mt-3">
+                    <div class="card-header">
+                            Something else
+                    </div>
+                        <hr>
+                        <div class="row">
+                            
+                                <div class="col-md-8">
+                                    <form action="">
+                                    <input type="text" name="" class="form-control" style="border-width: 0 0 1px">
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="btn btn-outline-info" type="submit" value="Search" id="">
+                                    </form>
+                                </div>
+                                                      
+                        </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                          </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         </div>
     </div>
 </div>
