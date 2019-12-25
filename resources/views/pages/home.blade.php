@@ -17,11 +17,10 @@
                             
 
                             <form action="">
-
-                                <input type="text" name="" id="">
-                                <input type="file" name="" id="">
-                                <input type="submit" name="" id="">
-
+                                <textarea name="" id="" class="form-control" rows="3" placeholder="Share something intresting"></textarea>
+                                <br>
+                                <input type="file" name="" id="" class="form-control-file"> <br>
+                                <input class="btn btn-outline-primary" type="submit" value="Post" id="">
                             </form>
 
                         </div>

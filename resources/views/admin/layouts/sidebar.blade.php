@@ -6,10 +6,10 @@
         <img src="/bower_components/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-      <a href="#" class="d-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+      <a href="{{route('profile.index')}}" class="d-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
       </div>
     </div>
-
+ 
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       
