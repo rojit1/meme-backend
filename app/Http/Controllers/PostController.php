@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post;
+use Auth;
 class PostController extends Controller
 {
     
@@ -13,7 +14,7 @@ class PostController extends Controller
 
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,51 +35,109 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $this->validate($request,[
+            'title'=>'required',
+            'image'=>'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category'=>'nullable'
+        ],[
+            'title.required'=>'Title is required'
+        ]);
+
+        if($request->hasFile('image')){
+
+            $fwe = $request->file('image')->getClientOriginalName();
+           
+            $filename = pathinfo($fwe,PATHINFO_FILENAME);
+            
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $imageStore = $filename.'_'.time().'.'.$ext;
+
+            $path = $request->file('image')->storeAs('public/memes/',$imageStore);
+
+        }else{
+            $imageStore=null;
+        }
+        $cat = '';
+        foreach($request->category as $c){
+            if($c)
+            $cat.=$c.',';
+        }
+        
+        $post = new Post();
+        $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
+        $post->image = $imageStore;
+        $post->category = $cat;
+        $post->save();
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.show')->with('post',$post);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->with('post',$post);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            'title'=>'required',
+            'image'=>'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category'=>'nullable'
+        ],[
+            'title.required'=>'Title is required'
+        ]);
+
+        $post = Post::find($id);
+
+        if($request->hasFile('image')){
+
+            $fwe = $request->file('image')->getClientOriginalName();
+           
+            $filename = pathinfo($fwe,PATHINFO_FILENAME);
+            
+            $ext = $request->file('image')->getClientOriginalExtension();
+
+            $imageStore = $filename.'_'.time().'.'.$ext;
+
+            $path = $request->file('image')->storeAs('public/memes/',$imageStore);
+
+            $post->image = $imageStore;
+
+
+        }
+
+        $cat = '';
+        foreach($request->category as $c){
+            if($c){
+                $cat.=$c.',';
+            }
+        }
+
+        
+        $post->title = $request->title;
+        $post->category = $cat;
+        $post->save();
+        return redirect('/profile');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/profile');
     }
 }

@@ -40,12 +40,61 @@
                     </tr>
 
                 </table>
+
+                
                 
             </div>
         </div>
         
     </div>
     </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-8" style="margin:auto">
+
+            @if(count($posts)>0)
+                @foreach($posts as $post)
+                    <div class="card mt-2 p-3">
+                        
+                            <div class="card-header">
+                                <img src="" alt="image">
+                                <p>{{Auth::user()->firstname}}</p>
+                            </div>
+                            <div class="card-body">
+                                <p>{{$post->title}}</p> <br>
+                                    @if($post->image)
+                                        <img style="border:2px solid lightblue" src="/storage/memes/{{$post->image}}" class="img-responsive" alt="image" width="100%">
+                                    @endif
+
+                                    @if($post->category)
+                                        @php($cat = explode(',',$post->category))
+                                        @foreach($cat as $c)
+                                            @if($c)
+                                                <li style="list-style-type: none"> # {{$c}}</li>
+                                            @endif
+                                        @endforeach
+                                    @endif
+
+                                    
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{route('posts.edit',$post->id)}}"><button class="btn btn-primary">Edit</button></a>
+                                <form action="{{route('posts.destroy',$post->id) }}" method="POST" style="display: inline-block">
+                                    @csrf
+                                    {{ method_field('DELETE') }} 
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+
+                            </div>
+                        
+                    </div>
+                @endforeach
+            @else 
+                <p>No posts yet</p>
+            @endif
+
+        </div>
     </div>
 </div>
 @endsection

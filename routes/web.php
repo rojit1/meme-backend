@@ -2,7 +2,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();//['verify'=>true]
@@ -27,7 +27,6 @@ Route::prefix('admin')->group(function(){
 Route::prefix('/admin/layout')->group(function(){
     Route::resource('/menu','Admin\AdminMenuController');
     Route::resource('/user','Admin\AdminUserController');
-
 });
 
 

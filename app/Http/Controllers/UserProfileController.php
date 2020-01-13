@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use App\Post;
 class UserProfileController extends Controller
 {
 
@@ -13,9 +14,10 @@ class UserProfileController extends Controller
     }
 
     public function showProfile(){
-        $id = Auth::user()->id;
-        $user = User::where('id','=',$id)->get()->first();
-        return view('pages.profile')->with('user',$user);
-        
+        $uid = Auth::user()->id;
+
+        $posts = Post::where('user_id','=',$uid)->latest()->get();
+        $user = User::where('id','=',$uid)->get()->first();
+        return view('pages.profile')->with(['user'=>$user,'posts'=>$posts]);  
     }
 }
