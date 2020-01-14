@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12"> <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7 m-auto">
                 <div class="card">
                     <div class="card-header">Hello, {{Auth::user()->firstname}}</div>
         
@@ -45,22 +45,45 @@
                         @if(count($posts)>0)
 
                         @foreach($posts as $post)
-
-                        <div class="card mt-3">
+                        <hr style="height:2px; border:none; color:black; background-color:#000; text-align:center;">
+                        <div class="card mt-5">
                             <div class="card-header">
-                                <div class="card-title">{{$post->user->firstname}}</div>
+                    
+                                    <img src="/storage/profile/{{$post->user->image}}" class="img-circle" width="50px">
+                                
+                                <div style="display: inline-block" class="card-title">{{$post->user->firstname}} {{$post->user->lastname}}</div>
                             </div>
-                            <a href="{{ route('posts.show',$post->id) }}">
                                 <div class="card-body">
-                                    <p>{{$post->title}}</p>
-                                    @if($post->image)
-                                        <img src="storage/memes/{{$post->image}}" width="100%" height="400px" alt="image">
+                                    <a style="text-decoration: none" href="{{ route('posts.show',$post->id) }}">
+
+                                        <p>{{$post->title}}</p>
+                                        @if($post->image)
+                                            <img class="img-responsive" src="storage/memes/{{$post->image}}" width="100%" height="300px" alt="image">  
+                                        @endif
                                     
-                                    @endif
+                                    </a> <br>
+                                    <small>{{$post->created_at->diffForHumans()}}</small>
                                 </div>
-                            </a>
+                            
                             <div class="card-footer">
-                                <small>{{$post->created_at->diffForHumans()}}</small>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button class="btn btn-success"><i class="fa fa-thumbs-up"></i></button>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <form action="{{route('comments.add',$post->id)}}" method="POST">
+                                            @csrf
+                                        
+                                            <div class="form-group">
+                                            <textarea name="body" class="form-control" rows="1"></textarea>   
+                                            <span style="color:red" class="help-block">{{$errors->first('body')}}</span>
+                                            </div>
+                                            
+                                            <input type="submit" value="Comment" class="btn btn-primary mt-1">
+                                        </form>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
@@ -75,7 +98,7 @@
 
             </div>
 
-            {{-- next row --}}
+            {{-- next row     SIDEBAR  --}}  
 
             <div class="col-md-4">
                 <div class="card">

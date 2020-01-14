@@ -12,6 +12,10 @@ Route::get('/memers','PagesController@memer');
 Route::get('/notification','PagesController@notification');
 // 
 Route::resource('/posts','PostController');
+Route::resource('/comments','CommentController');
+Route::post('/comments/{post}','CommentController@addComment')->name('comments.add');
+
+
 
 Route::get('/profile','UserProfileController@showProfile')->name('user.profile');
 

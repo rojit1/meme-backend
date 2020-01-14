@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use App\Comment;
 class PostController extends Controller
 {
     
@@ -78,8 +79,9 @@ class PostController extends Controller
 
     public function show($id)
     {
+        $comment = Comment::where('post_id',$id)->get();
         $post = Post::find($id);
-        return view('posts.show')->with('post',$post);
+        return view('posts.show')->with(['post'=>$post,'comment'=>$comment]);
     }
 
     
@@ -121,6 +123,7 @@ class PostController extends Controller
         }
 
         $cat = '';
+        if($request->category)
         foreach($request->category as $c){
             if($c){
                 $cat.=$c.',';

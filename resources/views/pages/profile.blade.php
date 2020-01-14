@@ -6,11 +6,9 @@
     <div style="border:2px solid black;padding:20px">
     <div class="row justify-content-center">
     <div class="col-md-4">
-        @if($user->image)
-            <img src="images/{{$user->image}}" alt="">
-        @else
-            <img src="{{ url('images/noimage.png') }}" alt="userimage">
-        @endif
+            <img src="storage/profile/{{$user->image}}" alt="">
+        
+        <button><a href="">Update Profile</a></button>
     </div>
 
     <div class="col-md-6">
@@ -58,8 +56,9 @@
                     <div class="card mt-2 p-3">
                         
                             <div class="card-header">
-                                <img src="" alt="image">
-                                <p>{{Auth::user()->firstname}}</p>
+                                <img src="storage/profile/{{$user->image}}" width="50px">
+                                <p style="display:inline-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+                                <span class="float-right"><a href="{{route('posts.show',$post->id)}}"><i class="fa fa-eye"></i></a></span>
                             </div>
                             <div class="card-body">
                                 <p>{{$post->title}}</p> <br>
