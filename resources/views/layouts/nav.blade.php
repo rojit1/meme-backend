@@ -50,7 +50,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="{{route('user.profile')}}">Profile</a>
+                            <a class="dropdown-item" href="{{route('user.profile',Auth::user()->id)}}">Profile</a>
                             <hr>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"

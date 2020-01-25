@@ -134,7 +134,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->category = $cat;
         $post->save();
-        return redirect('/profile');
+        return redirect('/profile/view/'.$id);
     }
 
     public function destroy($id)

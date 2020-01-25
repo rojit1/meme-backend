@@ -49,9 +49,9 @@
                         <div class="card mt-5">
                             <div class="card-header">
                     
-                                    <img src="/storage/profile/{{$post->user->image}}" class="img-circle" width="50px">
+                                    <img src="/storage/profile/{{$post->user->image}}" class="rounded-circle" style="width:70px;border:1px solid lightgreen"> &nbsp;
                                 
-                                <div style="display: inline-block" class="card-title">{{$post->user->firstname}} {{$post->user->lastname}}</div>
+                                <div style="display: inline-block" class="card-title"><a style="text-decoration: none" href="{{ route('user.profile',$post->user->id) }}">{{$post->user->firstname}} {{$post->user->lastname}}</a></div>
                             </div>
                                 <div class="card-body">
                                     <a style="text-decoration: none" href="{{ route('posts.show',$post->id) }}">

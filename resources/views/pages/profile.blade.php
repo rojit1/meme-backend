@@ -3,12 +3,10 @@
 @section('content')
 
 <div class="container">
-    <div style="border:2px solid black;padding:20px">
+    <div style="border:2px solid lightblue;padding:20px">
     <div class="row justify-content-center">
     <div class="col-md-4">
-            <img src="storage/profile/{{$user->image}}" alt="">
-        
-
+            <img src="/storage/profile/{{$user->image}}" width="100%" style="border-radius: 20px;box-shadow: 2px 2px 2px orange">
     </div>
 
     <div class="col-md-6">
@@ -37,8 +35,9 @@
                         <td>{{$user->country}}</td>
                     </tr>
                 </table>
+                @if(Auth::user()->id == $user->id)
                 <button class="btn btn-sm btn-outline-success"><a href="{{ route('user.editprofile',$user->id) }}">Update Profile</a></button>
-
+                @endif
 
                 
                 
@@ -57,9 +56,9 @@
                     <div class="card mt-2 p-3">
                         
                             <div class="card-header">
-                                <img src="storage/profile/{{$user->image}}" width="50px">
+                                <img src="/storage/profile/{{$user->image}}" width="50px">
                                 <p style="display:inline-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
-                                <span class="float-right"><a href="{{route('posts.show',$post->id)}}"><i class="fa fa-eye"></i></a></span>
+                                <span class="float-right"><a href="{{route('posts.show',$post->id)}}"><i style="font-size: 25px" class="fa fa-eye"></i></a></span>
                             </div>
                             <div class="card-body">
                                 <p>{{$post->title}}</p> <br>
@@ -79,13 +78,14 @@
                                     
                             </div>
                             <div class="card-footer">
+                                @if(Auth::user()->id == $user->id)
                                 <a href="{{route('posts.edit',$post->id)}}"><button class="btn btn-primary">Edit</button></a>
                                 <form action="{{route('posts.destroy',$post->id) }}" method="POST" style="display: inline-block">
                                     @csrf
                                     {{ method_field('DELETE') }} 
                                 <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-
+                                @endif
                             </div>
                         
                     </div>

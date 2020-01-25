@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">{{$post->user->firstname}} {{$post->user->lastname}}</div>
+                    <div class="card-title"><a style="text-decoration: none" href="{{ route('user.profile',$post->user->id) }}">{{$post->user->firstname}} {{$post->user->lastname}}</a></div>
                 </div>
                 <div class="card-body">
                     <p>{{$post->title}}</p>

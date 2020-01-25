@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-md-6 m-auto">
-            <form action="{{ route('user.updateProfile',$user->id) }}" method="POST">
+            <form action="{{ route('user.updateProfile',$user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PUT') }}
             <div class="card">
