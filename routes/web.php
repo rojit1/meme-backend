@@ -5,7 +5,8 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Auth::routes();//['verify'=>true]
+//Auth::routes();//['verify'=>true]
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/memers','PagesController@memer');
