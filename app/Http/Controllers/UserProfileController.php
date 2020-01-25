@@ -20,4 +20,12 @@ class UserProfileController extends Controller
         $user = User::where('id','=',$uid)->get()->first();
         return view('pages.profile')->with(['user'=>$user,'posts'=>$posts]);  
     }
+
+    public function editProfile(User $user){
+        return view('pages.edit-profile')->with('user',$user);
+    }
+
+    public function updateProfile(Request $request, $id){
+        return 'Here';
+    }
 }

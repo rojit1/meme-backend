@@ -18,6 +18,10 @@ Route::post('/comments/{post}','CommentController@addComment')->name('comments.a
 
 
 Route::get('/profile','UserProfileController@showProfile')->name('user.profile');
+Route::get('/profile/{user}','UserProfileController@editProfile')->name('user.editprofile');
+Route::put('/profile/{user}','UserProfileController@updateProfile')->name('user.updateProfile');
+
+
 
 
 Route::prefix('admin')->group(function(){

@@ -8,7 +8,7 @@
     <div class="col-md-4">
             <img src="storage/profile/{{$user->image}}" alt="">
         
-        <button><a href="">Update Profile</a></button>
+
     </div>
 
     <div class="col-md-6">
@@ -36,8 +36,9 @@
                         <td>Country</td>
                         <td>{{$user->country}}</td>
                     </tr>
-
                 </table>
+                <button class="btn btn-sm btn-outline-success"><a href="{{ route('user.editprofile',$user->id) }}">Update Profile</a></button>
+
 
                 
                 

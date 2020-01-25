@@ -48,7 +48,7 @@
                             
                             @else
                             <li class="list-group-item mt-1 p-1 mr-5">
-                                <p> <img src="" alt=""> {{$cmnt->user->firstname}}</p>
+                                <p> <img src="" alt=""> {{$cmnt->user->firstname}} {{$cmnt->user->lastname}} </p>
                                 {{$cmnt->body}} 
                                 <small class="float-right">{{$cmnt->created_at->diffForHumans()}}</small> 
                             </li>
