@@ -50,14 +50,14 @@
     <hr>
     <div class="row">
         <div class="col-md-8" style="margin:auto">
-
+    
             @if(count($posts)>0)
                 @foreach($posts as $post)
                     <div class="card mt-2 p-3">
                         
                             <div class="card-header">
                                 <img src="/storage/profile/{{$user->image}}" width="50px">
-                                <p style="display:inline-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</p>
+                                <p style="display:inline-block">{{$post->user->firstname}} {{$post->user->lastname}}</p>
                                 <span class="float-right"><a href="{{route('posts.show',$post->id)}}"><i style="font-size: 25px" class="fa fa-eye"></i></a></span>
                             </div>
                             <div class="card-body">

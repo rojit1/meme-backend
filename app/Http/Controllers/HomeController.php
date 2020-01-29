@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\Post;
+use App\Like;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $posts = Post::latest()->simplePaginate(10);
         return view('pages.home')->with('posts',$posts);
     }

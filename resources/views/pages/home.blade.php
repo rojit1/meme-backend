@@ -64,13 +64,13 @@
                                     </a> <br>
                                     <small>{{$post->created_at->diffForHumans()}}</small>
                                 </div>
-                            
+                                {{-- @php($l = App\Like::find('post_id','=',$post->id)->get()) --}}
                             <div class="card-footer">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <button class="btn btn-success"><i class="fa fa-thumbs-up"></i></button>
+                                    <div class="col-md-3"> &nbsp;
+                                        <button class="btn btn-outline-success"><i class="fa fa-thumbs-up"></i></button>
                                     </div>
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <form action="{{route('comments.add',$post->id)}}" method="POST">
                                             @csrf
                                         
