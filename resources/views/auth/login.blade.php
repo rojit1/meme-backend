@@ -23,7 +23,7 @@
     }
     .card-header{
         border-bottom: 2px solid blueviolet;
-        background-color: lightgray  ;
+        background-color: lightgray ;
     }
 
     .form-control:focus {

@@ -68,7 +68,31 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-md-3"> &nbsp;
-                                        <button class="btn btn-outline-success"><i class="fa fa-thumbs-up"></i></button>
+                                      
+                                            <p>{{count($post->likes)}} likes</p>
+
+
+                                                @php($c = count($post->likes->where('user_id',Auth::user()->id)))
+                                                
+                                                @if($c>0)
+                                                    <a href="">Unlike</a>
+                                                @else
+                                                <form action="{{ route('like.add',$post->id) }}" method="POST">
+                                                    @csrf
+                                                    <button class="btn btn-outline-success"><i class="fa fa-thumbs-up"></i></button>
+                                                </form>
+                                                @endif
+                                                
+                                                
+                                                
+
+                                          
+                                            
+                                            
+                                            
+                                         
+                                        
+                                        
                                     </div>
                                     <div class="col-md-9">
                                         <form action="{{route('comments.add',$post->id)}}" method="POST">

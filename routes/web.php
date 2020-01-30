@@ -16,7 +16,9 @@ Route::resource('/posts','PostController');
 Route::resource('/comments','CommentController');
 Route::post('/comments/{post}','CommentController@addComment')->name('comments.add');
 
+// Likes
 
+Route::post('/like/{post}','LikesController@addLike')->name('like.add');
 
 Route::get('/profile/view/{user}','UserProfileController@showProfile')->name('user.profile');
 Route::get('/profile/{user}','UserProfileController@editProfile')->name('user.editprofile');
@@ -37,8 +39,6 @@ Route::prefix('/admin/layout')->group(function(){
     Route::resource('/menu','Admin\AdminMenuController');
     Route::resource('/user','Admin\AdminUserController');
     Route::resource('/root','Admin\AdminRootController');
-
-
 });
 
 

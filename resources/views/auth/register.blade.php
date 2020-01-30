@@ -24,7 +24,7 @@
     }
     .card-header{
         border-bottom: 2px solid blueviolet;
-        background-color: lightgray  ;
+        background-color: lightgray;
     }
 
     .form-control:focus {
@@ -41,7 +41,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" style="background-color: lightblue">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
