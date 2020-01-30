@@ -29,8 +29,9 @@
             </td>
             </tr>
         @endforeach
-
+        
     </table>
+    {{ $users->links() }}
 
    
 

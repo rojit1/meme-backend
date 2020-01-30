@@ -59,6 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
 </div>
 
+@yield('scripts')
 
 <script src="/bower_components/admin-lte/plugins/jquery/jquery.min.js"></script>
 <script src="/bower_components/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

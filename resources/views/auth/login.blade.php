@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('style')
+@php($wp = App\Wallpaper::where('active','=','1')->get()->first())
     <style> 
 
     body{
-        background-image: url('/images/b.jpg');
+        background-image: url('/images/{{$wp->image}}');
         background-position: center;
     }
     .card{

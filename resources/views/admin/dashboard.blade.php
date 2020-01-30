@@ -70,7 +70,7 @@
     <div class="card">
       <div class="card-header border-0">
         <div class="d-flex justify-content-between">
-          <h3 class="card-title">Online Store Visitors</h3>
+          <h3 class="card-title">User registration in This week</h3>
 
         </div>
       </div>
@@ -90,7 +90,9 @@
         <!-- /.d-flex -->
 
         <div class="position-relative mb-4">
-          <canvas id="visitors-chart" height="200"></canvas>
+          
+          {!! $data['linedata']->container() !!}
+
         </div>
 
         <div class="d-flex flex-row justify-content-end">
@@ -109,3 +111,9 @@
 
 
 @endsection
+
+@if($data['linedata'])
+  @section('scripts')
+    {!! $data['linedata']->script() !!}
+  @stop
+@endif

@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-class AdminUserController extends Controller
+use App\Wallpaper;
+class AdminRootController extends Controller
 {
+    
     public function __construct(){
         $this->middleware('auth:admin');
     }
+
     public function index()
     {
-        $users = User::latest()->paginate(10);
-        return view('admin.pages.user')->with('users',$users);
+        $wp = Wallpaper::all();
+        return view('admin.pages.root')->with('wp',$wp);
     }
 
     /**
@@ -45,7 +47,17 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $w = Wallpaper::where('active','=','1')->get()->first();
+        $w->active = 0;
+        $w->save();
+
+        $wp = Wallpaper::find($id);
+        $wp->active = 1;
+        $wp->save();
+        return back();
+        
+
+
     }
 
     /**

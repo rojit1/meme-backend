@@ -29,6 +29,15 @@
             </a>
           </li>
         </ul>
+
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+          <a href="{{ route('root.index') }}" class="nav-link">
+              <i class="far fa-image nav-icon"></i>
+              <p>Wallpaper</p>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li class="nav-item has-treeview menu-open">
