@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        li img{ 
+            width:60px;
+            border:1px solid lightgreen;
+        }
+        .card-title img{
+            width:120px;
+        }
+        .card-title{
+            padding: 0px
+        }
+    </style>
+@stop
+
 @section('content')
 
     <div class="row">
@@ -7,7 +22,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title"><a style="text-decoration: none" href="{{ route('user.profile',$post->user->id) }}">{{$post->user->firstname}} {{$post->user->lastname}}</a></div>
+                    
+                    <div class="card-title">
+                        <img src="/storage/profile/{{$post->user->image}}" alt="">
+                        <a style="text-decoration: none" href="{{ route('user.profile',$post->user->id) }}">{{$post->user->firstname}} {{$post->user->lastname}}</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <p>{{$post->title}}</p>
@@ -48,7 +67,7 @@
                             
                             @else
                             <li class="list-group-item mt-1 p-1 mr-5">
-                                <p> <img src="" alt=""> {{$cmnt->user->firstname}} {{$cmnt->user->lastname}} </p>
+                                <p> <img src="/storage/profile/{{$cmnt->user->image}}" alt=""> {{$cmnt->user->firstname}} {{$cmnt->user->lastname}} </p>
                                 {{$cmnt->body}} 
                                 <small class="float-right">{{$cmnt->created_at->diffForHumans()}}</small> 
                             </li>

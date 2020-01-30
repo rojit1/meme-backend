@@ -19,12 +19,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('style')
 </head>
 <body>
     <div id="app">
         
-        @include('layouts.nav')
-
+        <header>
+            @include('layouts.nav')
+        </header>
+        
         <main class="py-4">
             @yield('content')
         </main>
