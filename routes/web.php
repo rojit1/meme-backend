@@ -19,6 +19,8 @@ Route::post('/comments/{post}','CommentController@addComment')->name('comments.a
 // Likes
 
 Route::post('/like/{post}','LikesController@addLike')->name('like.add');
+Route::get('/like/{post}','LikesController@removeLike')->name('like.remove');
+
 
 Route::get('/profile/view/{user}','UserProfileController@showProfile')->name('user.profile');
 Route::get('/profile/{user}','UserProfileController@editProfile')->name('user.editprofile');

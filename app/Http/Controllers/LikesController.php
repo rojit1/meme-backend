@@ -16,4 +16,11 @@ class LikesController extends Controller
         $like->save();
         return back();
     }
+
+    public function removeLike(Post $post){
+        $like = Like::where([['post_id','=',$post->id],['user_id','=',Auth::user()->id]])->get()->first();
+        $like->delete();
+        return back();
+  
+    }
 }

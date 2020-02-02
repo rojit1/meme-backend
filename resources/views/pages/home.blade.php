@@ -75,9 +75,9 @@
                                                 @php($c = count($post->likes->where('user_id',Auth::user()->id)))
                                                 
                                                 @if($c>0)
-                                                    <a href="">Unlike</a>
+                                                    <a href="{{ route('like.remove',$post->id) }}">Unlike</a>
                                                 @else
-                                                <form action="{{ route('like.add',$post->id) }}" method="POST">
+                                                <form action="{{ route('like.add',$post) }}" method="POST">
                                                     @csrf
                                                     <button class="btn btn-outline-success"><i class="fa fa-thumbs-up"></i></button>
                                                 </form>

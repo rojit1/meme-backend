@@ -7,7 +7,7 @@
             border:1px solid lightgreen;
         }
         .card-title img{
-            width:120px;
+            width:50px;
         }
         .card-title{
             padding: 0px
@@ -24,7 +24,7 @@
                 <div class="card-header">
                     
                     <div class="card-title">
-                        <img src="/storage/profile/{{$post->user->image}}" alt="">
+                        <img src="/storage/profile/{{$post->user->image}}" class="rounded-circle">
                         <a style="text-decoration: none" href="{{ route('user.profile',$post->user->id) }}">{{$post->user->firstname}} {{$post->user->lastname}}</a>
                     </div>
                 </div>
@@ -36,8 +36,9 @@
                     <small mt-2>{{$post->created_at->diffForHumans()}}</small>
                 </div>
                 <div class="card-footer">
+                    @php($like_c = count($post->likes))
                     <div class="likes">
-                        <p style="display: inline-block">22 likes</p> &nbsp; <p style="display: inline-block"> {{count($post->comments)}} Comments</p>
+                        <p style="display: inline-block">{{$like_c}} likes</p> &nbsp; <p style="display: inline-block"> {{count($post->comments)}} Comments</p>
                     </div>
                   <form action="{{route('comments.add',$post->id)}}" method="POST">
                     @csrf
