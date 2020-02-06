@@ -134,13 +134,13 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->category = $cat;
         $post->save();
-        return redirect('/profile/view/'.$id);
+        return redirect('/profile/view/'.Auth::user()->id);
     }
 
     public function destroy($id)
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/profile');
+        return redirect('/profile/view/'.Auth::user()->id);
     }
 }

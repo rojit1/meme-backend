@@ -16,6 +16,10 @@ Route::resource('/posts','PostController');
 Route::resource('/comments','CommentController');
 Route::post('/comments/{post}','CommentController@addComment')->name('comments.add');
 
+// search 
+
+Route::get('/search','SearchController@search')->name('search');
+
 // Likes
 
 Route::post('/like/{post}','LikesController@addLike')->name('like.add');

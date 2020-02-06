@@ -22,8 +22,9 @@
                     @endforeach
                 @endif
 
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search memes" aria-label="Search">
+                <form method="get" action="{{route('search')}}" class="form-inline my-2 my-lg-0">
+                    @csrf
+                    <input class="form-control mr-sm-2" name="search_q" type="search" placeholder="Search memes" aria-label="Search">
                     <button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Search</button>
                   </form>
                    
